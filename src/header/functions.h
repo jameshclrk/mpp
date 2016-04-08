@@ -1,5 +1,5 @@
 /* * MPP Coursework - MPI Edge Reconstruction
- * Copyright (C) 2015,1016 James Clark
+ * Copyright (C) 2015,2016 James Clark
  *
  * This file is part of MPP Coursework.
  *
