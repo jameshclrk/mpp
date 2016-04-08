@@ -1,0 +1,42 @@
+MPP Coursework
+##############
+
+## Included Libraries
+The code is ready to be compiled on the CP Lab machines as is, however there are two included libraries:
+    pgmio
+    arralloc
+These were the libraries provided on Learn.
+
+## Compilation:
+Each implementation should be compiled as follows:
+
+    make clean && make parallel
+  or
+    make clean && make serial
+
+## Execution:
+The parallel code should be executed with:
+    mpiexec -n N ./reconstruct.parallel [options] edge_file
+
+The serial code should be executed with:
+    ./reconstruct.serial [options] edge_file
+
+## Benchmarking:
+The benchmark should be submitted to Morar with:
+    qsub -q morar1+2 run.sh
+
+## Validating Output
+The sha256-checksum file contains the hashes for all the reconstructed images generated from the edge files in the edge folder after 2500 iterations.
+The benchmark will automatically try to validate the output, however manual verification is possible if the output is written as follows:
+    mpiexec -n [P] ./reconstruct.parallel edge/edgenew[N]x[M].pgm -o out/[N]x[M]-[P].pgm
+  and
+    ./reconstruct.serial edge/edgenew[N]x[M].pgm -o out/[N]x[M]-serial.pgm
+The output can be verified by running:
+    sha256sum -c sha256-checksum
+
+Note if the file does not exist, it will fail the validation.
+
+## Documentation
+The documentation can be generated running
+   doxygen
+and can be found in the resulting doc/ directory
